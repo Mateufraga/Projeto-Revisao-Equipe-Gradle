@@ -2,9 +2,13 @@ package org.example;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 class ListaDeProdutos {
+    Scanner promptString = new Scanner(System.in);
+    Scanner promptDouble = new Scanner(System.in);
     private Map<String, Double> products;
+    protected Map<String, Double> selectProducts = new HashMap<String, Double>();
 
     public ListaDeProdutos() {
         products = new HashMap<>();
@@ -27,6 +31,50 @@ class ListaDeProdutos {
     }
 
     public void selecionarProdutos() {
-        // Implemente a lógica para permitir ao usuário selecionar produtos e quantidades desejados
+        int flag = 0;
+        while(flag != 9){
+            System.out.println(products);
+            System.out.println("Qual item voce deseja adicionar na carga? ");
+            String item = promptString.nextLine();
+            System.out.println("Quantos itens voce deseja?");
+            double quantidade = promptDouble.nextDouble();
+            switch (item) {
+                case "Celular" -> {
+                    selectProducts.put(item, (quantidade * 0.7));
+                    break;
+                }
+                case "Geladeira" -> {
+                    selectProducts.put(item, (quantidade * 50.0));
+                    break;
+                }
+                case "Air Fryer" -> {
+                    selectProducts.put(item, (quantidade * 3.5));
+                    break;
+                }
+                case "Cadeira" -> {
+                    selectProducts.put(item, (quantidade * 5.0));
+                    break;
+                }
+                case "Luminaria" -> {
+                    selectProducts.put(item, (quantidade * 0.8));
+                    break;
+                }
+                case "Lavadora de roupa" -> {
+                    selectProducts.put(item, (quantidade * 15.0));
+                    break;
+                }
+                case "PlayStation 5" -> {
+                    selectProducts.put(item, (quantidade * 3.9));
+                    break;
+                }
+                case "Nintendo Switch" -> {
+                    selectProducts.put(item, (quantidade * 0.3));
+                    break;
+                }
+            }
+            System.out.println("Se deseja continuar, digite 0. Se deseja encerrar, digite 9!");
+            flag = promptDouble.nextInt();
+        }
+        System.out.println("Sua lista de carga: " + selectProducts);
     }
 }

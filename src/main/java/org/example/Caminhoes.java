@@ -27,8 +27,8 @@ public class Caminhoes {
             this.capacidadeAtual = 0;
         }
     }
-    public double Calcularvalor(double distancia) {
-        double Valor = this.Valorkm * distancia;
+    public double Calcularvalor(double distancia, int quantidadeCaminhoes) {
+        double Valor = this.Valorkm * distancia * quantidadeCaminhoes;
         return Valor;
     }
     public boolean Verificapeso(double peso) {

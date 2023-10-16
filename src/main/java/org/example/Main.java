@@ -1,5 +1,6 @@
 package org.example;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
 
         DistanciasCidades Amarelinha = new DistanciasCidades("src/main/java/org/example/DistanciasCidadesCSV.csv");
         ListaDeProdutos productList = new ListaDeProdutos();
+        CadastroTransporte cadastroTransporte = new CadastroTransporte("src/main/java/org/example/DistanciasCidadesCSV.csv");
 
         while (true) {
             System.out.println("+--------------------------------------------------+");
@@ -26,14 +28,14 @@ public class Main {
             switch (choice) {
                 case 1:
                     Scanner scanner1 = new Scanner(System.in);
-                        Amarelinha.listaCidades();
+                    Amarelinha.listaCidades();
                     System.out.println("+--------------------------+");
                     System.out.println("|  Escolha as cidades!    |");
                     System.out.println("+--------------------------+");
                     String cidade1;
-                        String cidade2;
-                        cidade1 = scanner1.nextLine();
-                        cidade2 = scanner1.nextLine();
+                    String cidade2;
+                    cidade1 = scanner1.nextLine();
+                    cidade2 = scanner1.nextLine();
                     String Cide1 = cidade1.toUpperCase();
                     String Cide2 = cidade2.toUpperCase();
                     if (Cide1 == Cide2) {
@@ -53,7 +55,7 @@ public class Main {
                             int caminhaoEscolhido = scanner1.nextInt();
                             Caminhoes caminhao = new Caminhoes(caminhaoEscolhido);
                             double distancia = Amarelinha.pegaDistancia(Cide1, Cide2);
-                            double Valor = caminhao.Calcularvalor(distancia);
+                            double Valor = caminhao.Calcularvalor(distancia, 1);
                             System.out.println("+---------------------------------------------------------------+");
                             System.out.println("|                Informações sobre o trajeto                     |");
                             System.out.println("+---------------------------------------------------------------+");
@@ -72,10 +74,65 @@ public class Main {
                     }
                     break;
                 case 2:
-                    // Opção de Cadastrar transporte
-                    productList.listarProdutos(); // Implemente este método na classe ProductList
-                    productList.selecionarProdutos(); // Implemente este método na classe ProductList
-                    //transportSystem.cadastrarTransporte(productList); // Implemente este método na classe TransportSystem
+                    // Arredondar numeros e interacao com usuario
+
+                        DecimalFormat df = new DecimalFormat("###.##");
+                        Scanner prompt = new Scanner(System.in);
+
+                    // Listar Cidades
+
+                        Amarelinha.listaCidades();
+                        System.out.println("Qual sua cidade de origem? ");
+                        String cidadeOrigem = prompt.nextLine();
+                        System.out.println("Qual sua cidade de destino? ");
+                        String cidadeDestino = prompt.nextLine();
+                        int distanciaASerPercorrida = Amarelinha.pegaDistancia(cidadeOrigem, cidadeDestino);
+
+                    // Criar Lista de Carga
+
+                        productList.listarProdutos();
+                        productList.selecionarProdutos();
+
+                    // Calcular Preco e Melhor Caminhao
+
+                        double soma = productList.selectProducts.values().stream().mapToDouble(Double::doubleValue).sum();
+                        double valorTransporte = 0;
+                        double valorOpicional = 0;
+
+                    if (soma > 10000) {
+                        Caminhoes caminhoes = new Caminhoes(3);
+                        int contador = 0;
+                        while (soma > 10000) {
+                            soma -= 10000;
+                            contador += 1;
+                        }
+                        valorOpicional += caminhoes.Calcularvalor(distanciaASerPercorrida, contador);
+                    }
+                    if (soma <= 2301.88) {
+                        if (soma > 1000) {
+                            Caminhoes caminhoes1 = new Caminhoes(1);
+                            valorTransporte += caminhoes1.Calcularvalor(distanciaASerPercorrida, 2);
+                        } else if (soma <= 1000) {
+                            Caminhoes caminhoes2 = new Caminhoes(1);
+                            valorTransporte += caminhoes2.Calcularvalor(distanciaASerPercorrida, 1);
+                        }
+                    }
+                    if (soma > 2301.88 && soma <= 8706.40) {
+                        if (soma > 2301.88 && soma <= 4000) {
+                            Caminhoes caminhoes3 = new Caminhoes(2);
+                            valorTransporte += caminhoes3.Calcularvalor(distanciaASerPercorrida, 1);
+                        } else if (soma > 4000 && soma < 8706.40) {
+                            Caminhoes caminhoes4 = new Caminhoes(2);
+                            Caminhoes caminhoes42 = new Caminhoes(1);
+                            valorTransporte += caminhoes4.Calcularvalor(distanciaASerPercorrida, 1) + caminhoes42.Calcularvalor(distanciaASerPercorrida, 1);
+                        }
+                    }
+                    if (soma > 8706.40 && soma <= 10000) {
+                        Caminhoes caminhoes5 = new Caminhoes(3);
+                        valorTransporte += caminhoes5.Calcularvalor(distanciaASerPercorrida, 1);
+                    }
+                    System.out.println("O custo da viagem de " + cidadeOrigem + " ate a cidade de " + cidadeDestino + " eh de: " + df.format(valorTransporte + valorOpicional));
+                    System.out.println("A distancia da viagem eh de " + distanciaASerPercorrida + " KM.");
                     break;
                 case 3:
                     // Opção de Dados estatísticos
