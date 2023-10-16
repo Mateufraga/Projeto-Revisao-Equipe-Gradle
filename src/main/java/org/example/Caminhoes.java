@@ -25,6 +25,8 @@ public class Caminhoes {
             this.CapacidadeMaxima = 10000.0;
             this.Valorkm = 29.21;
             this.capacidadeAtual = 0;
+        } else{
+            System.out.println("Erro. O custo será definido como 0. Escolha um caminhão válido e tente novamente.");
         }
     }
     public double Calcularvalor(double distancia, int quantidadeCaminhoes) {

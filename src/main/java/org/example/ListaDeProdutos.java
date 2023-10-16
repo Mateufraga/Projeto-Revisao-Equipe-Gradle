@@ -32,12 +32,12 @@ class ListaDeProdutos {
     }
 
     public void selecionarProdutos() {
-        int flag = 0;
-        while(flag != 9){
+        int flag;
+        do{
             System.out.println(products);
-            System.out.println("Qual item voce deseja adicionar na carga? ");
+            System.out.println("Qual item voce deseja adicionar na carga? (Digite o item como ele aparece na lista) ");
             String item = promptString.nextLine().toUpperCase();
-            System.out.println("Quantos itens voce deseja?");
+            System.out.println("Quantos itens você deseja transportar?");
             int quantidade = promptDouble.nextInt();
             switch (item) {
                 case "CELULAR" -> {
@@ -74,9 +74,11 @@ class ListaDeProdutos {
                 }
                 default -> System.out.println("Este produto não está na lista. Verifique a sua ortografia e tente novamente");
             }
-            System.out.println("Se deseja continuar, digite 0. Se deseja encerrar, digite 9!");
+            System.out.println("Você deseja (Digite o número): ");
+            System.out.println("1 - Continuar adicionando itens ");
+            System.out.println("2 - Sair ");
             flag = promptDouble.nextInt();
-        }
+        }while(flag != 2);
         System.out.println("Sua lista de carga: (Produto / Peso total em KG) " + selectProducts);
     }
 }

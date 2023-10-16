@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33aedf90-bfc5-4a37-9f13-012e2a0893c5" name="Changes" comment="Matheus">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CadastroTransporte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CadastroTransporte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DistanciasCidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DistanciasCidades.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ListaDeProdutos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ListaDeProdutos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
@@ -60,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_directory_selection": "C:/Users/mathe/IdeaProjects/Projeto-Revisao-Equipe-Gradlle/src/main/java/org/example",
-    "onboarding.tips.debug.path": "C:/Users/mathe/IdeaProjects/Projeto-Revisao-Equipe-Gradlle/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.52528733",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/mathe/IdeaProjects/Projeto-Revisao-Equipe-Gradlle/src/main/java/org/example&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mathe/IdeaProjects/Projeto-Revisao-Equipe-Gradlle/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.52528733&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mathe\IdeaProjects\Projeto-Revisao-Equipe-Gradlle\src\main\java\org\example" />

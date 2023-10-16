@@ -35,7 +35,10 @@ public class Main {
                     System.out.println("+--------------------------+");
                     String cidade1;
                     String cidade2;
+                    String enter;
+                    System.out.println("Digite a cidade de partida: ");
                     cidade1 = scanner1.nextLine();
+                    System.out.println("Digite a cidade de destino: ");
                     cidade2 = scanner1.nextLine();
                     String Cide1 = cidade1.toUpperCase();
                     String Cide2 = cidade2.toUpperCase();
@@ -65,10 +68,17 @@ public class Main {
                             System.out.println("|   Distância: " + distancia + " km");
                             System.out.println("|   Custo: R$ " + Valor);
                             System.out.println("+---------------------------------------------------------------+");
+                            System.out.println("Aperte Enter para continuar");
+                            scanner1.nextLine();
+                            scanner1.nextLine();
+
                         } else {
                             System.out.println("+------------------------+");
                             System.out.println("|  Erro, tente novamente  |");
                             System.out.println("+------------------------+");
+                            System.out.println("Aperte Enter para continuar");
+                            scanner1.nextLine();
+                            scanner1.nextLine();
 
                             break;
                         }
@@ -148,14 +158,18 @@ public class Main {
                     cadastrosDeTransportes.precosAdicionados.add(Double.valueOf(valorTotal));
                     cadastrosDeTransportes.distanciaDeTrechos.add(distanciaASerPercorrida);
                     cadastrosDeTransportes.precosTotais.add(Double.valueOf(valorTotal));
-                    System.out.println(productList.productsQuantity);
+                    System.out.println("Aperte Enter para continuar");
+                    prompt.nextLine();
                     break;
                 case 3:
+                    Scanner input = new Scanner(System.in);
                     // Opção de Dados estatísticos
                     //transportSystem.exibirDadosEstatisticos(); // Implemente este método na classe TransportSystem
                     cadastrosDeTransportes.exibeEstatisticas();
                     cadastrosDeTransportes.calculaCustoMedioPorProduto(productList.selectProducts,productList.productsQuantity,cadastrosDeTransportes.precosAdicionados);
                     cadastrosDeTransportes.contaTotalDeItensTransportados(productList.productsQuantity);
+                    System.out.println("Aperte Enter para continuar");
+                    input.nextLine();
                     break;
                 case 4:
                     // Opção de Finalizar o programa
