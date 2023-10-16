@@ -3,13 +3,14 @@ package org.example;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         DistanciasCidades Amarelinha = new DistanciasCidades("src/main/java/org/example/DistanciasCidadesCSV.csv");
         ListaDeProdutos productList = new ListaDeProdutos();
-        CadastroTransporte cadastroTransporte = new CadastroTransporte("src/main/java/org/example/DistanciasCidadesCSV.csv");
+        CadastroTransporte cadastrosDeTransportes = new CadastroTransporte();
 
         while (true) {
             System.out.println("+--------------------------------------------------+");
@@ -76,28 +77,35 @@ public class Main {
                 case 2:
                     // Arredondar numeros e interacao com usuario
 
-                        DecimalFormat df = new DecimalFormat("###.##");
-                        Scanner prompt = new Scanner(System.in);
+                    DecimalFormat df = new DecimalFormat("###.##");
+                    Scanner prompt = new Scanner(System.in);
 
                     // Listar Cidades
 
-                        Amarelinha.listaCidades();
+                    Amarelinha.listaCidades();
+                    String cidadeOrigem;
+                    String cidadeDestino;
+                    do {
                         System.out.println("Qual sua cidade de origem? ");
-                        String cidadeOrigem = prompt.nextLine();
+                        cidadeOrigem = prompt.nextLine().toUpperCase();
                         System.out.println("Qual sua cidade de destino? ");
-                        String cidadeDestino = prompt.nextLine();
-                        int distanciaASerPercorrida = Amarelinha.pegaDistancia(cidadeOrigem, cidadeDestino);
+                        cidadeDestino = prompt.nextLine().toUpperCase();
+                        if(!Amarelinha.Indice.containsKey(cidadeOrigem) || !Amarelinha.Indice.containsKey(cidadeDestino) || cidadeOrigem.equals(cidadeDestino)){
+                            System.out.println("Atenção: Uma das cidades digitadas não está presente na lista ou as duas cidades são iguais. Revise a sua ortografia e tente novamente.");
+                        }
+                    } while (!Amarelinha.Indice.containsKey(cidadeOrigem) || !Amarelinha.Indice.containsKey(cidadeDestino) || cidadeOrigem.equals(cidadeDestino));
+                    double distanciaASerPercorrida = Amarelinha.pegaDistancia(cidadeOrigem, cidadeDestino);
 
                     // Criar Lista de Carga
 
-                        productList.listarProdutos();
-                        productList.selecionarProdutos();
+                    productList.listarProdutos();
+                    productList.selecionarProdutos();
 
                     // Calcular Preco e Melhor Caminhao
 
-                        double soma = productList.selectProducts.values().stream().mapToDouble(Double::doubleValue).sum();
-                        double valorTransporte = 0;
-                        double valorOpicional = 0;
+                    double soma = productList.selectProducts.values().stream().mapToDouble(Double::doubleValue).sum();
+                    double valorTransporte = 0;
+                    double valorOpcional = 0;
 
                     if (soma > 10000) {
                         Caminhoes caminhoes = new Caminhoes(3);
@@ -106,37 +114,48 @@ public class Main {
                             soma -= 10000;
                             contador += 1;
                         }
-                        valorOpicional += caminhoes.Calcularvalor(distanciaASerPercorrida, contador);
+                        valorOpcional += caminhoes.Calcularvalor(distanciaASerPercorrida, contador);
                     }
                     if (soma <= 2301.88) {
                         if (soma > 1000) {
                             Caminhoes caminhoes1 = new Caminhoes(1);
                             valorTransporte += caminhoes1.Calcularvalor(distanciaASerPercorrida, 2);
-                        } else if (soma <= 1000) {
+                        } else {
                             Caminhoes caminhoes2 = new Caminhoes(1);
                             valorTransporte += caminhoes2.Calcularvalor(distanciaASerPercorrida, 1);
                         }
                     }
                     if (soma > 2301.88 && soma <= 8706.40) {
-                        if (soma > 2301.88 && soma <= 4000) {
+                        if (soma <= 4000) {
                             Caminhoes caminhoes3 = new Caminhoes(2);
                             valorTransporte += caminhoes3.Calcularvalor(distanciaASerPercorrida, 1);
-                        } else if (soma > 4000 && soma < 8706.40) {
+                        } else if (soma < 8706.40) {
                             Caminhoes caminhoes4 = new Caminhoes(2);
                             Caminhoes caminhoes42 = new Caminhoes(1);
                             valorTransporte += caminhoes4.Calcularvalor(distanciaASerPercorrida, 1) + caminhoes42.Calcularvalor(distanciaASerPercorrida, 1);
                         }
                     }
-                    if (soma > 8706.40 && soma <= 10000) {
+                    if (soma > 8706.40) {
                         Caminhoes caminhoes5 = new Caminhoes(3);
                         valorTransporte += caminhoes5.Calcularvalor(distanciaASerPercorrida, 1);
                     }
-                    System.out.println("O custo da viagem de " + cidadeOrigem + " ate a cidade de " + cidadeDestino + " eh de: " + df.format(valorTransporte + valorOpicional));
+
+                    String valorTotal = df.format(valorTransporte + valorOpcional);
+                    valorTotal = valorTotal.replace(',', '.');
                     System.out.println("A distancia da viagem eh de " + distanciaASerPercorrida + " KM.");
+                    System.out.println("O custo da viagem de " + cidadeOrigem + " ate a cidade de " + cidadeDestino + " eh de: R$" + valorTotal);
+                    cadastrosDeTransportes.numeroDeTrechos++;
+                    cadastrosDeTransportes.precosAdicionados.add(Double.valueOf(valorTotal));
+                    cadastrosDeTransportes.distanciaDeTrechos.add(distanciaASerPercorrida);
+                    cadastrosDeTransportes.precosTotais.add(Double.valueOf(valorTotal));
+                    System.out.println(productList.productsQuantity);
                     break;
                 case 3:
                     // Opção de Dados estatísticos
                     //transportSystem.exibirDadosEstatisticos(); // Implemente este método na classe TransportSystem
+                    cadastrosDeTransportes.exibeEstatisticas();
+                    cadastrosDeTransportes.calculaCustoMedioPorProduto(productList.selectProducts,productList.productsQuantity,cadastrosDeTransportes.precosAdicionados);
+                    cadastrosDeTransportes.contaTotalDeItensTransportados(productList.productsQuantity);
                     break;
                 case 4:
                     // Opção de Finalizar o programa

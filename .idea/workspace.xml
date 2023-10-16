@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33aedf90-bfc5-4a37-9f13-012e2a0893c5" name="Changes" comment="Matheus">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Caminhoes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DistanciasCidades.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DistanciasCidadesCSV.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ListaDeProdutos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/DistanciasCidadesTeste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CadastroTransporte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CadastroTransporte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DistanciasCidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DistanciasCidades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ListaDeProdutos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ListaDeProdutos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +46,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -72,7 +65,6 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "master",
     "last_directory_selection": "C:/Users/mathe/IdeaProjects/Projeto-Revisao-Equipe-Gradlle/src/main/java/org/example",
     "onboarding.tips.debug.path": "C:/Users/mathe/IdeaProjects/Projeto-Revisao-Equipe-Gradlle/src/main/java/org/example/Main.java",

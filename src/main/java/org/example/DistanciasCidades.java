@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DistanciasCidades {
-    private Map<String, Integer> Indice = new HashMap<>();
+    public Map<String, Integer> Indice = new HashMap<>();
     private int[][] matrizDeDistancias;
 
     public DistanciasCidades(String caminhoCSV) {

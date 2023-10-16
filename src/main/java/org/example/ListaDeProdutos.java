@@ -7,19 +7,20 @@ import java.util.Scanner;
 class ListaDeProdutos {
     Scanner promptString = new Scanner(System.in);
     Scanner promptDouble = new Scanner(System.in);
-    private Map<String, Double> products;
-    protected Map<String, Double> selectProducts = new HashMap<String, Double>();
+    private Map<String,Double> products;
+    public Map<String,Double> selectProducts = new HashMap<>();
+    public Map<String,Integer> productsQuantity = new HashMap<>();
 
     public ListaDeProdutos() {
         products = new HashMap<>();
         // Inicialize a lista de produtos com os nomes e pesos
         products.put("Celular", 0.7);
         products.put("Geladeira", 50.0);
-        products.put("Air Fryer", 3.5);
+        products.put("Air fryer", 3.5);
         products.put("Cadeira", 5.0);
-        products.put("Luminária", 0.8);
+        products.put("Luminaria", 0.8);
         products.put("Lavadora de roupa", 15.0);
-        products.put("PlayStation 5", 3.9);
+        products.put("Playstation 5", 3.9);
         products.put("Nintendo Switch", 0.3);
     }
 
@@ -35,46 +36,47 @@ class ListaDeProdutos {
         while(flag != 9){
             System.out.println(products);
             System.out.println("Qual item voce deseja adicionar na carga? ");
-            String item = promptString.nextLine();
+            String item = promptString.nextLine().toUpperCase();
             System.out.println("Quantos itens voce deseja?");
-            double quantidade = promptDouble.nextDouble();
+            int quantidade = promptDouble.nextInt();
             switch (item) {
-                case "Celular" -> {
-                    selectProducts.put(item, (quantidade * 0.7));
-                    break;
+                case "CELULAR" -> {
+                    selectProducts.put(item, (quantidade * 0.70));
+                    productsQuantity.put(item,quantidade);
                 }
-                case "Geladeira" -> {
+                case "GELADEIRA" -> {
                     selectProducts.put(item, (quantidade * 50.0));
-                    break;
+                    productsQuantity.put(item,quantidade);
                 }
-                case "Air Fryer" -> {
-                    selectProducts.put(item, (quantidade * 3.5));
-                    break;
+                case "AIR FRYER" -> {
+                    selectProducts.put(item, (quantidade * 3.50));
+                    productsQuantity.put(item,quantidade);
                 }
-                case "Cadeira" -> {
+                case "CADEIRA" -> {
                     selectProducts.put(item, (quantidade * 5.0));
-                    break;
+                    productsQuantity.put(item,quantidade);
                 }
-                case "Luminaria" -> {
-                    selectProducts.put(item, (quantidade * 0.8));
-                    break;
+                case "LUMINARIA" -> {
+                    selectProducts.put(item, (quantidade * 0.80));
+                    productsQuantity.put(item,quantidade);
                 }
-                case "Lavadora de roupa" -> {
+                case "LAVADORA DE ROUPA" -> {
                     selectProducts.put(item, (quantidade * 15.0));
-                    break;
+                    productsQuantity.put(item,quantidade);
                 }
-                case "PlayStation 5" -> {
-                    selectProducts.put(item, (quantidade * 3.9));
-                    break;
+                case "PLAYSTATION 5" -> {
+                    selectProducts.put(item, (quantidade * 3.90));
+                    productsQuantity.put(item,quantidade);
                 }
-                case "Nintendo Switch" -> {
+                case "NINTENDO SWITCH" -> {
                     selectProducts.put(item, (quantidade * 0.3));
-                    break;
+                    productsQuantity.put(item,quantidade);
                 }
+                default -> System.out.println("Este produto não está na lista. Verifique a sua ortografia e tente novamente");
             }
             System.out.println("Se deseja continuar, digite 0. Se deseja encerrar, digite 9!");
             flag = promptDouble.nextInt();
         }
-        System.out.println("Sua lista de carga: " + selectProducts);
+        System.out.println("Sua lista de carga: (Produto / Peso total em KG) " + selectProducts);
     }
 }
