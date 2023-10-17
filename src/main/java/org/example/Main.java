@@ -116,10 +116,13 @@ public class Main {
                     double soma = productList.selectProducts.values().stream().mapToDouble(Double::doubleValue).sum();
                     double valorTransporte = 0;
                     double valorOpcional = 0;
+                    int caminhaoPequeno = 0;
+                    int caminhaoMedio = 0;
+                    int caminhaoGrande = 0;
+                    int contador = 0;
 
                     if (soma > 10000) {
                         Caminhoes caminhoes = new Caminhoes(3);
-                        int contador = 0;
                         while (soma > 10000) {
                             soma -= 10000;
                             contador += 1;
@@ -130,30 +133,39 @@ public class Main {
                         if (soma > 1000) {
                             Caminhoes caminhoes1 = new Caminhoes(1);
                             valorTransporte += caminhoes1.Calcularvalor(distanciaASerPercorrida, 2);
+                            caminhaoPequeno += 2;
                         } else {
                             Caminhoes caminhoes2 = new Caminhoes(1);
                             valorTransporte += caminhoes2.Calcularvalor(distanciaASerPercorrida, 1);
+                            caminhaoPequeno += 1;
                         }
                     }
                     if (soma > 2301.88 && soma <= 8706.40) {
                         if (soma <= 4000) {
                             Caminhoes caminhoes3 = new Caminhoes(2);
                             valorTransporte += caminhoes3.Calcularvalor(distanciaASerPercorrida, 1);
-                        } else if (soma < 8706.40) {
+                            caminhaoMedio += 1;
+                        } else if (soma < 8706.40 && soma > 4000) {
                             Caminhoes caminhoes4 = new Caminhoes(2);
                             Caminhoes caminhoes42 = new Caminhoes(1);
                             valorTransporte += caminhoes4.Calcularvalor(distanciaASerPercorrida, 1) + caminhoes42.Calcularvalor(distanciaASerPercorrida, 1);
+                            caminhaoPequeno += 1;
+                            caminhaoMedio += 1;
                         }
                     }
                     if (soma > 8706.40) {
                         Caminhoes caminhoes5 = new Caminhoes(3);
                         valorTransporte += caminhoes5.Calcularvalor(distanciaASerPercorrida, 1);
+                        caminhaoGrande += 1;
                     }
 
                     String valorTotal = df.format(valorTransporte + valorOpcional);
                     valorTotal = valorTotal.replace(',', '.');
                     System.out.println("A distancia da viagem eh de " + distanciaASerPercorrida + " KM.");
                     System.out.println("O custo da viagem de " + cidadeOrigem + " ate a cidade de " + cidadeDestino + " eh de: R$" + valorTotal);
+
+                    System.out.println("Foram utilizados: " + caminhaoPequeno + " caminhões pequenos, " + caminhaoMedio + " caminhões medios" + " e " + (caminhaoGrande + contador) + " caminhões grandes!");
+
                     cadastrosDeTransportes.numeroDeTrechos++;
                     cadastrosDeTransportes.precosAdicionados.add(Double.valueOf(valorTotal));
                     cadastrosDeTransportes.distanciaDeTrechos.add(distanciaASerPercorrida);
