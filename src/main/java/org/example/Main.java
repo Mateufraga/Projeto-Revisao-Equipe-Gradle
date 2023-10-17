@@ -184,8 +184,6 @@ public class Main {
                 case 3:
                     if(controlaDados) {
                         Scanner input = new Scanner(System.in);
-                        // Opção de Dados estatísticos
-                        //transportSystem.exibirDadosEstatisticos(); // Implemente este método na classe TransportSystem
                         cadastrosDeTransportes.exibeEstatisticas();
                         cadastrosDeTransportes.calculaCustoMedioPorProduto(productList.selectProducts, productList.productsQuantity, cadastrosDeTransportes.precosAdicionados);
                         cadastrosDeTransportes.contaTotalDeItensTransportados(productList.productsQuantity);
@@ -199,7 +197,6 @@ public class Main {
                     }
                         break;
                 case 4:
-                    // Opção de Finalizar o programa
                     System.out.println("O programa foi encerrado. Obrigado por usar a Amarelinha!");
                     System.exit(0);
                 default:
