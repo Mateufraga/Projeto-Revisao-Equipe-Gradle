@@ -6,10 +6,16 @@ import java.util.Map;
 
 public class CadastroTransporte extends ListaDeProdutos{
     public int numeroDeTrechos = 0;
+    public int caminhoesPequenos = 0;
+    public int caminhoesMedios = 0;
+    public int caminhoesGrandes = 0;
+    public double custoPorCaminhoesPequenos;
+    public double custoPorCaminhoesMedios;
+    public double custoPorCaminhoesGrandes;
     ArrayList<Double> distanciaDeTrechos = new ArrayList<>();
     ArrayList<Double> precosTotais = new ArrayList<>();
     ArrayList<Double> precosAdicionados = new ArrayList<>();
-    DecimalFormat df = new DecimalFormat("0.00");
+    DecimalFormat df = new DecimalFormat("###.##");
 
     public double calculaCustoTotal(ArrayList precosTotais){
         double precoTotal = 0;
@@ -52,18 +58,27 @@ public class CadastroTransporte extends ListaDeProdutos{
         System.out.println("Total de itens transportados: " + totalDeItens);
     }
 
-    // Falta implementar esses outros dois metódos
-//    public double calculaCustoPorModalidadeDeTransporte(){
-//
-//    };
 
-    //    public int numeroTotalDeVeiculosDeslocados(){
-//
-//    };
+    public double calculaCustoPorCaminhaoPequeno(double distance){
+         return (this.caminhoesPequenos * distance) * 5.83;
+    };
+
+    public double calculaCustoPorCaminhaoMedio(double distance){
+        return (this.caminhoesMedios * distance) * 13.42;
+    }
+
+    public double calculaCustoPorCaminhaoGrande(double distance){
+        return (this.caminhoesGrandes * distance) * 29.21;
+    }
+
+
 
     public void exibeEstatisticas(){
         System.out.println("Preco total: R$ " + calculaCustoTotal(precosTotais));
         System.out.println("Custo médio por KM: R$" + calculaCustoMedioPorKm());
         System.out.println("Custo por trecho: R$" + calculaCustoPorTrecho(numeroDeTrechos));
+        System.out.println("Total de caminhões pequenos utilizados: " + this.caminhoesPequenos);
+        System.out.println("Total de caminhões médios utilizados: " + this.caminhoesMedios);
+        System.out.println("Total de caminhões grandes utilizados: " + this.caminhoesGrandes);
     }
 }

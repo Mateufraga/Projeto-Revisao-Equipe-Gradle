@@ -11,6 +11,7 @@ public class Main {
         DistanciasCidades Amarelinha = new DistanciasCidades("src/main/java/org/example/DistanciasCidadesCSV.csv");
         ListaDeProdutos productList = new ListaDeProdutos();
         CadastroTransporte cadastrosDeTransportes = new CadastroTransporte();
+        boolean controlaDados = false;
 
         while (true) {
             System.out.println("+--------------------------------------------------+");
@@ -166,23 +167,37 @@ public class Main {
 
                     System.out.println("Foram utilizados: " + caminhaoPequeno + " caminhões pequenos, " + caminhaoMedio + " caminhões medios" + " e " + (caminhaoGrande + contador) + " caminhões grandes!");
 
+                    cadastrosDeTransportes.caminhoesPequenos += caminhaoPequeno;
+                    cadastrosDeTransportes.caminhoesMedios += caminhaoMedio;
+                    cadastrosDeTransportes.caminhoesGrandes += (caminhaoGrande + contador);
+                    cadastrosDeTransportes.custoPorCaminhoesPequenos = cadastrosDeTransportes.calculaCustoPorCaminhaoPequeno(distanciaASerPercorrida);
+                    cadastrosDeTransportes.custoPorCaminhoesMedios = cadastrosDeTransportes.calculaCustoPorCaminhaoMedio(distanciaASerPercorrida);
+                    cadastrosDeTransportes.custoPorCaminhoesGrandes= cadastrosDeTransportes.calculaCustoPorCaminhaoGrande(distanciaASerPercorrida);
                     cadastrosDeTransportes.numeroDeTrechos++;
                     cadastrosDeTransportes.precosAdicionados.add(Double.valueOf(valorTotal));
                     cadastrosDeTransportes.distanciaDeTrechos.add(distanciaASerPercorrida);
                     cadastrosDeTransportes.precosTotais.add(Double.valueOf(valorTotal));
+                    controlaDados = true;
                     System.out.println("Aperte Enter para continuar");
                     prompt.nextLine();
                     break;
                 case 3:
-                    Scanner input = new Scanner(System.in);
-                    // Opção de Dados estatísticos
-                    //transportSystem.exibirDadosEstatisticos(); // Implemente este método na classe TransportSystem
-                    cadastrosDeTransportes.exibeEstatisticas();
-                    cadastrosDeTransportes.calculaCustoMedioPorProduto(productList.selectProducts,productList.productsQuantity,cadastrosDeTransportes.precosAdicionados);
-                    cadastrosDeTransportes.contaTotalDeItensTransportados(productList.productsQuantity);
-                    System.out.println("Aperte Enter para continuar");
-                    input.nextLine();
-                    break;
+                    if(controlaDados) {
+                        Scanner input = new Scanner(System.in);
+                        // Opção de Dados estatísticos
+                        //transportSystem.exibirDadosEstatisticos(); // Implemente este método na classe TransportSystem
+                        cadastrosDeTransportes.exibeEstatisticas();
+                        cadastrosDeTransportes.calculaCustoMedioPorProduto(productList.selectProducts, productList.productsQuantity, cadastrosDeTransportes.precosAdicionados);
+                        cadastrosDeTransportes.contaTotalDeItensTransportados(productList.productsQuantity);
+                        System.out.println("Custo total em caminhões pequenos: R$" + cadastrosDeTransportes.custoPorCaminhoesPequenos);
+                        System.out.println("Custo total em caminhões médios: R$" + cadastrosDeTransportes.custoPorCaminhoesMedios);
+                        System.out.println("Custo total em caminhões grandes: R$" + cadastrosDeTransportes.custoPorCaminhoesGrandes);
+                        System.out.println("Aperte Enter para continuar");
+                        input.nextLine();
+                    } else {
+                        System.out.println("Ainda não há dados estatisticos registrados.");
+                    }
+                        break;
                 case 4:
                     // Opção de Finalizar o programa
                     System.out.println("O programa foi encerrado. Obrigado por usar a Amarelinha!");
