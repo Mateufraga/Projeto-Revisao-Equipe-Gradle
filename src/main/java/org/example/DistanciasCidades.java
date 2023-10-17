@@ -94,7 +94,7 @@ public class DistanciasCidades {
         }
     }
 
-    // verifica se a cidade existe
+
     public boolean verificaCidade(String cidade) {
         return Indice.containsKey(cidade);
     }
